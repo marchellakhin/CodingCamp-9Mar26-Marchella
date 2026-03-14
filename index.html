@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productivity Dashboard</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <main class="dashboard">
+    <header class="dashboard-header">
+      <h1>Productivity Dashboard</h1>
+    </header>
+
+    <section class="greeting-section">
+      <div class="greeting-display">
+        <div class="time"></div>
+        <div class="date"></div>
+        <div class="greeting"></div>
+      </div>
+    </section>
+
+    <section class="timer-section">
+      <h2>Focus Timer</h2>
+      <div class="focus-timer">
+        <div class="timer-display">25:00</div>
+        <div class="timer-controls">
+          <button class="btn-start">Start</button>
+          <button class="btn-stop">Stop</button>
+          <button class="btn-reset">Reset</button>
+        </div>
+        <div class="timer-complete" style="display:none">Timer Complete!</div>
+      </div>
+    </section>
+
+    <section class="tasks-section">
+      <h2>Tasks</h2>
+      <div class="task-manager">
+        <form class="task-form">
+          <input type="text" class="task-input" placeholder="Add a new task..." required>
+          <button type="submit" class="btn-add-task">Add</button>
+        </form>
+        <ul class="task-list"></ul>
+      </div>
+    </section>
+
+    <section class="links-section">
+      <h2>Quick Links</h2>
+      <div class="quick-links-manager">
+        <form class="link-form">
+          <input type="text" class="link-name-input" placeholder="Link name..." required>
+          <input type="url" class="link-url-input" placeholder="URL..." required>
+          <button type="submit" class="btn-add-link">Add Link</button>
+        </form>
+        <div class="links-container"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

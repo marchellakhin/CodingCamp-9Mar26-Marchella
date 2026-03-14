@@ -1,0 +1,541 @@
+/* Productivity Dashboard Styles */
+
+/* ===== CSS Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== Base Styles ===== */
+/* Requirement 7.2: Readable font sizes of at least 14px for body text */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #2c3e50;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Requirement 7.5: Sufficient contrast between text and background */
+/* Primary color scheme */
+:root {
+  --primary-color: #667eea;
+  --primary-dark: #5568d3;
+  --secondary-color: #764ba2;
+  --success-color: #48bb78;
+  --danger-color: #f56565;
+  --text-primary: #2c3e50;
+  --text-secondary: #718096;
+  --text-light: #a0aec0;
+  --bg-white: #ffffff;
+  --bg-light: #f7fafc;
+  --bg-gray: #edf2f7;
+  --border-color: #e2e8f0;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+}
+
+/* ===== Dashboard Layout ===== */
+/* Requirement 7.6: No horizontal scrolling on viewports 320px or larger */
+.dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Requirement 7.3: Clear visual hierarchy with distinct sections */
+.dashboard-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--bg-white);
+}
+
+.dashboard-header h1 {
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== Section Styles ===== */
+/* Requirement 7.1: Consistent color scheme throughout */
+section {
+  background: var(--bg-white);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-lg);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+section:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+}
+
+section h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  border-bottom: 2px solid var(--bg-gray);
+  padding-bottom: 0.5rem;
+}
+
+/* ===== Greeting Display Component ===== */
+.greeting-section {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  color: var(--bg-white);
+}
+
+.greeting-section:hover {
+  transform: none;
+}
+
+.greeting-display {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.greeting-display .time {
+  font-size: clamp(2rem, 8vw, 3.5rem);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+.greeting-display .date {
+  font-size: clamp(1rem, 3vw, 1.25rem);
+  margin-bottom: 1rem;
+  opacity: 0.95;
+}
+
+.greeting-display .greeting {
+  font-size: clamp(1.25rem, 4vw, 1.75rem);
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+/* ===== Focus Timer Component ===== */
+.focus-timer {
+  text-align: center;
+}
+
+.timer-display {
+  font-size: clamp(3rem, 10vw, 4.5rem);
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.05em;
+}
+
+.timer-controls {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.timer-complete {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: var(--success-color);
+  color: var(--bg-white);
+  border-radius: var(--radius-md);
+  font-size: 1.125rem;
+  font-weight: 600;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* ===== Button Styles ===== */
+/* Requirement 7.4: Intuitive icons or labels for all interactive controls */
+button {
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0.625rem 1.25rem;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: var(--primary-color);
+  color: var(--bg-white);
+  box-shadow: var(--shadow-sm);
+}
+
+button:hover {
+  background: var(--primary-dark);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+button:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Timer button variants */
+.btn-start {
+  background: var(--success-color);
+}
+
+.btn-start:hover {
+  background: #38a169;
+}
+
+.btn-stop {
+  background: var(--text-secondary);
+}
+
+.btn-stop:hover {
+  background: #4a5568;
+}
+
+.btn-reset {
+  background: var(--text-light);
+  color: var(--text-primary);
+}
+
+.btn-reset:hover {
+  background: #cbd5e0;
+}
+
+/* ===== Task Manager Component ===== */
+.task-form {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.task-input {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.625rem 1rem;
+  font-size: 14px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.task-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.task-list {
+  list-style: none;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem;
+  margin-bottom: 0.5rem;
+  background: var(--bg-light);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.task-item:hover {
+  background: var(--bg-gray);
+  border-color: var(--primary-color);
+}
+
+.task-item.completed {
+  opacity: 0.6;
+}
+
+.task-item.completed .task-text {
+  text-decoration: line-through;
+  color: var(--text-secondary);
+}
+
+.task-checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--primary-color);
+}
+
+.task-text {
+  flex: 1;
+  font-size: 14px;
+  color: var(--text-primary);
+  word-break: break-word;
+}
+
+.btn-edit-task,
+.btn-delete-task {
+  padding: 0.5rem 0.875rem;
+  font-size: 13px;
+}
+
+.btn-edit-task {
+  background: var(--text-secondary);
+}
+
+.btn-edit-task:hover {
+  background: #4a5568;
+}
+
+.btn-delete-task {
+  background: var(--danger-color);
+}
+
+.btn-delete-task:hover {
+  background: #e53e3e;
+}
+
+/* ===== Quick Links Manager Component ===== */
+.link-form {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.link-name-input,
+.link-url-input {
+  flex: 1;
+  min-width: 150px;
+  padding: 0.625rem 1rem;
+  font-size: 14px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.link-name-input:focus,
+.link-url-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.links-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.75rem;
+}
+
+.link-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.link-button {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  color: var(--bg-white);
+  font-weight: 600;
+  text-align: center;
+  word-break: break-word;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.link-button:hover {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-color) 100%);
+}
+
+.btn-delete-link {
+  padding: 0.375rem 0.75rem;
+  background: var(--danger-color);
+  font-size: 13px;
+}
+
+.btn-delete-link:hover {
+  background: #e53e3e;
+}
+
+/* ===== Responsive Design ===== */
+/* Requirement 7.6: No horizontal scrolling on viewports 320px or larger */
+
+/* Mobile devices (320px - 767px) */
+@media (max-width: 767px) {
+  body {
+    padding: 10px;
+  }
+
+  .dashboard-header h1 {
+    font-size: 1.75rem;
+  }
+
+  section {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  section h2 {
+    font-size: 1.125rem;
+  }
+
+  .timer-display {
+    font-size: 3rem;
+  }
+
+  .timer-controls {
+    flex-direction: column;
+  }
+
+  .timer-controls button {
+    width: 100%;
+  }
+
+  .task-form {
+    flex-direction: column;
+  }
+
+  .task-input,
+  .btn-add-task {
+    width: 100%;
+  }
+
+  .task-item {
+    flex-wrap: wrap;
+  }
+
+  .btn-edit-task,
+  .btn-delete-task {
+    flex: 1;
+  }
+
+  .link-form {
+    flex-direction: column;
+  }
+
+  .link-name-input,
+  .link-url-input,
+  .btn-add-link {
+    width: 100%;
+  }
+
+  .links-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tablets (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .links-container {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+/* Desktop (1024px and up) */
+@media (min-width: 1024px) {
+  body {
+    padding: 30px;
+  }
+
+  section {
+    padding: 2rem;
+  }
+
+  .links-container {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+}
+
+/* Extra small devices (320px) */
+@media (max-width: 320px) {
+  body {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .dashboard-header {
+    margin-bottom: 1rem;
+  }
+
+  section {
+    padding: 0.875rem;
+    margin-bottom: 0.875rem;
+  }
+
+  .greeting-display .time {
+    font-size: 2rem;
+  }
+
+  .timer-display {
+    font-size: 2.5rem;
+  }
+
+  button {
+    padding: 0.5rem 1rem;
+    font-size: 13px;
+  }
+}
+
+/* ===== Utility Classes ===== */
+.hidden {
+  display: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ===== Print Styles ===== */
+@media print {
+  body {
+    background: white;
+    padding: 0;
+  }
+
+  section {
+    box-shadow: none;
+    page-break-inside: avoid;
+  }
+
+  button {
+    display: none;
+  }
+
+  .timer-controls {
+    display: none;
+  }
+}
